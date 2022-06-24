@@ -27,10 +27,19 @@ public class TicketMachine
      */
     public TicketMachine(Integer ticketCost)
     {
-        price = ticketCost;
+        //price = ticketCost;
+        price = 1000;
         balance = 0;
         total = 0;
         ticketNumber = 0;
+    }
+    
+    public void empty() {
+        total = 0;
+    }
+    
+    public void setPrice(int newPrice) {
+        price = newPrice;
     }
 
     /**
@@ -58,6 +67,14 @@ public class TicketMachine
     {
         return balance;
     }
+    
+    /**
+     * Returns the total
+     */
+    public Integer getTotal()
+    {
+        return total;
+    }
 
     /**
      * Receive an amount of money in cents from a customer.
@@ -78,21 +95,33 @@ public class TicketMachine
         return ticketNumber;
     }
     
+    public void prompt()
+    {
+        System.out.println("Please insert the correct amount of money.");
+    }
+    
+    public void showPrice()
+    {
+        System.out.println("The price of a ticket is " + price + " cents");
+    }
 
     /**
      * Print a ticket.
      * Update the total collected and
      * reduce the balance to zero.
      */
-    public String printTicket()
+    public void printTicket()
     {
-        //Increment the number of tickets printed
-        incrementTicketNumber();
+        // Simulate the printing of a ticket.
+        System.out.println("##################");
+        System.out.println("# The BlueJ Line");
+        System.out.println("# Ticket");
+        System.out.println("# " + price + " cents.");
+        System.out.println("##################");
+        System.out.println();
         // Update the total collected with the balance.
         total = total + balance;
         // Clear the balance.
         balance = 0;
-        
-        return "Ticket price: " + price + " cents. " + "Your total is " + total + ".";
     }
 }
